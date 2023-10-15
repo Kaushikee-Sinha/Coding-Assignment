@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <style>
+    body {
+	background-color: #0073e6;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+	  }
+    
+	.container {
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      width: 400px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    select,
+    input[type="email"],
+    input[type="tel"] {
+      width: 80%;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    label[for="male"],
+    label[for="female"],
+    label[for="other"] {
+      margin-right: 10px;
+	  display:inline;
+  margin-bottom: 10px; 
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 10px 5px;
+    }
+
+    button#submit-button {
+      background-color: #0073e6;
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+	  h2 {
+      text-align: center;
+      color: #f1f1f1;
+      margin: 20px 0; /* Added margin for spacing */
+    }
+	  
+  </style>
+</head>
+<body>
+  <h2>Customer Survey Form</h2> 
+  <div class="container">
+  <form id="survey-form">
+    <label for="first-name">First Name:</label>
+    <input type="text" id="first-name" required>
+
+    <label for="last-name">Last Name:</label>
+    <input type="text" id="last-name" required>
+
+    <label for="date-of-birth">Date of Birth:</label>
+    <input type="date" id="date-of-birth" required>
+
+    <label for="country">Country:</label>
+    <select id="country" required>
+	<option value="Other">Other</option>
+      <option value="USA">USA</option>
+      <option value="Canada">Canada</option>
+     <option value="India">India</option>
+    </select>
+
+    <label>Gender:</label>
+	    <input type="radio" name="gender" id="male" required>
+
+    <label for="male">Male</label>
+	    <input type="radio" name="gender" id="female" required>
+
+    <label for="female">Female</label>
+	    <input type="radio" name="gender" id="other" required>
+    <label for="other">Other</label>
+
+
+
+    <label for="profession">Profession:</label>
+    <input type="text" id="profession" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+
+    <label for="mobile-number">Mobile Number:</label>
+    <input type="tel" id="mobile-number" required>
+
+    <button type="button" id="reset-button">Reset</button>
+    <button type="button" id="submit-button">Submit</button>
+  </form>
+  </div>
+
+  
+  <script>
+     document.getElementById('submit-button').addEventListener('click', 
+	 function() {
+	 if (document.getElementById('first-name').value === "") {
+    alert("please fill the first-name");
+}
+ else if (document.getElementById('last-name').value === "") {
+ alert("please fill the last-name");}
+ else if (document.getElementById('date-of-birth').value === "") {
+ alert("please fill the date of birth");}
+ else if (document.getElementById('country').value === "") {
+ alert("please fill the country");}
+ else if (document.getElementById('profession').value === "") {
+ alert("please fill the profession");}
+ else if (document.getElementById('email').value === "") {
+ alert("please fill the email");}
+ else if(document.getElementById('mobile-number').value === "") {
+ alert("please fill the mobile no");}
+ 
+ 
+	   else{const popupContent = `
+             <p><strong>First Name:</strong> ${document.getElementById('first-name').value}</p>
+             <p><strong>Last Name:</strong> ${document.getElementById('last-name').value}</p>
+             <p><strong>Date of Birth:</strong> ${document.getElementById('date-of-birth').value}</p>
+             <p><strong>Country:</strong> ${document.getElementById('country').value}</p>
+             <p><strong>Gender:</strong> 
+               ${document.getElementById('male').checked ? 'Male' : ''}
+               ${document.getElementById('female').checked ? 'Female' : ''}
+               ${document.getElementById('other').checked ? 'Other' : ''}
+             </p>
+             <p><strong>Profession:</strong> ${document.getElementById('profession').value}</p>
+             <p><strong>Email:</strong> ${document.getElementById('email').value}</p>
+             <p><strong>Mobile Number:</strong> ${document.getElementById('mobile-number').value}</p>
+           `;
+     
+           
+           const popup = window.open('', 'Survey Form Submission', 'width=400,height=400');
+           popup.document.write(popupContent);}
+    });
+
+    document.getElementById('reset-button').addEventListener('click', function() {
+      
+      document.getElementById('survey-form').reset();
+    });
+	
+  </script>
+</body>
+</html>

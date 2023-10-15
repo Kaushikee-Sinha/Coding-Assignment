@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HTML Calculator</title>
+	
+    <style>
+        table {
+            border: 1px solid black;
+            margin-left: auto;
+            margin-right: auto;
+		
+        }
+
+        input[type="button"] {
+            width: 100%;
+            padding: 20px 40px;
+            background-color: black;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+        }
+		input[type="button"].AC-button {
+            background-color: green; /* Change the "C" button color to green */
+        }
+		#addButton, #subtractButton, #multiplyButton, #divideButton {
+    background-color: grey;
+}
+
+
+        input[type="text"] {
+            padding: 20px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table id="calcu">
+        <tr>
+            <td colspan="3">
+                <input type="text" id="result">
+            </td>
+            <td><input type="button" value="AC" id="clearButton" class="AC-button"></td>
+        </tr>
+
+        <tr>
+            <td><input type="button" value="9" id="num1"></td>
+            <td><input type="button" value="8" id="num2"></td>
+            <td><input type="button" value="7" id="num3"></td>
+            <td><input type="button" value="+" id="addButton"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="4" id="num4"></td>
+            <td><input type="button" value="5" id="num5"></td>
+            <td><input type="button" value="6" id="num6"></td>
+            <td><input type="button" value="-" id="subtractButton"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="1" id="num7"></td>
+            <td><input type="button" value="2" id="num8"></td>
+            <td><input type="button" value="3" id="num9"></td>
+            <td><input type="button" value="/" id="divideButton"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="." id="decimalButton"></td>
+            <td><input type="button" value="0" id="num0"></td>
+            <td><input type="button" value="=" id="equalButton"></td>
+            <td><input type="button" value="*" id="multiplyButton"></td>
+        </tr>
+		
+    </table>
+	
+    <script>
+        
+        const resultInput = document.getElementById("result");
+
+        
+        function appendToResult(value) {
+            resultInput.value += value;
+        }
+
+        
+        function clearResult() {
+            resultInput.value = "";
+        }
+
+        
+        function calculateResult() {
+            try {
+                resultInput.value = eval(resultInput.value);
+            } catch (error) {
+                resultInput.value = "Error";
+            }
+        }
+
+        
+        document.getElementById("num1").addEventListener("click", () => appendToResult('9'));
+        document.getElementById("num2").addEventListener("click", () => appendToResult('8'));
+        document.getElementById("num3").addEventListener("click", () => appendToResult('7'));
+        document.getElementById("num4").addEventListener("click", () => appendToResult('4'));
+        document.getElementById("num5").addEventListener("click", () => appendToResult('5'));
+        document.getElementById("num6").addEventListener("click", () => appendToResult('6'));
+        document.getElementById("num7").addEventListener("click", () => appendToResult('1'));
+        document.getElementById("num8").addEventListener("click", () => appendToResult('2'));
+        document.getElementById("num9").addEventListener("click", () => appendToResult('3'));
+        document.getElementById("num0").addEventListener("click", () => appendToResult('0'));
+        document.getElementById("decimalButton").addEventListener("click", () => appendToResult('.'));
+        document.getElementById("addButton").addEventListener("click", () => appendToResult('+'));
+        document.getElementById("subtractButton").addEventListener("click", () => appendToResult('-'));
+        document.getElementById("multiplyButton").addEventListener("click", () => appendToResult('*'));
+        document.getElementById("divideButton").addEventListener("click", () => appendToResult('/'));
+        document.getElementById("equalButton").addEventListener("click", calculateResult);
+        document.getElementById("clearButton").addEventListener("click", clearResult);
+    </script>
+</body>
+
+</html>
